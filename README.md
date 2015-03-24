@@ -15,7 +15,7 @@ export-from forms.
 
 * Forwarding the *default* export of the referenced module
 as a named export of this module: `export v from "mod"`
-* Exporting the whole Module object as a named export: `export * as ns from "mod"`
+* Exporting the ModuleNameSpace object as a named export: `export * as ns from "mod"`
 
 
 ### Current ES6 Modules:
