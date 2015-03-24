@@ -1,18 +1,21 @@
 # Additonal export-from statements in ES7
 
 The `export ___ from "module"` statements are a very useful mechanism for
-building up "package" modules in a declarative way. In the ES6 spec, we can
-export through a single export with `export {x} from "mod"`, optionally renaming
-it with `export {x as v} from "mod"`. We can also spread all exports with
-`export * from "mod"`.
+building up "package" modules in a declarative way. In the ES6 spec, we can:
+
+* export through a single export with `export {x} from "mod"`
+* ...optionally renaming it with `export {x as v} from "mod"`
+* We can also spread all exports with `export * from "mod"`.
 
 These three export-from statements are easy to understand if you understand the
 semantics of the similar looking import statements.
 
 However, there are other import statements which would have very useful
-export-from forms: for forwarding the *default* export of the referenced module
-as a named export of this module: `export v from "mod"`. And for exporting
-the whole Module object as a named export: `export * as ns from "mod"`.
+export-from forms.
+
+* Forwarding the *default* export of the referenced module
+as a named export of this module: `export v from "mod"`
+* Exporting the whole Module object as a named export: `export * as ns from "mod"`
 
 
 ### Current ES6 Modules:
@@ -75,7 +78,7 @@ import v from "mod";
 export {v};
 ```
 
-```
+```js
 // proposed: export * as ns from "mod";
 import * as ns from "mod";
 export {ns};
