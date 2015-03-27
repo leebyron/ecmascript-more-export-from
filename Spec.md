@@ -1,8 +1,8 @@
 > Note to editor: This document is written as a delta against the ES6 RC4
 > specification. Headers illustrate the location in the specification. The use
 > of <ins>ins</ins> and <del>del</del> illustrate addition and removal to
-> existing sections otherwise omitted content should be assumed irrelevant
-> to this proposal unless otherwise noted.
+> existing sections. Unadorned content is new. Omitted content should be assumed
+> irrelevant to this proposal unless otherwise noted.
 
 ---
 
@@ -42,8 +42,8 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 *ExportDeclaration* :
   - <del>`export` `*` *FromClause* `;`</del>
   - <del>`export` *ExportClause* *FromClause* `;`</del>
-  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <del>`export` *ExportClause* `;`</del>
+  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <ins>`export` *NamedExports* `;`</ins>
   - `export` *VariableStatement*
   - `export` *Declaration*
@@ -51,22 +51,21 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
   - `export` `default` *ClassDeclaration*<sub>[Default]</sub>
   - `export` `default` [lookahead ∉ {`function`, `class`}] *AssignmentExpression*<sub>[In]</sub> `;`
 
-<ins>*ExportFromClause*</ins> :
-  - <ins>`*`</ins>
-  - <ins>*ExportedDefaultBinding*</ins>
-  - <ins>*NameSpaceExport*</ins>
-  - <ins>*NamedExports*</ins>
-  - <ins>*ExportedDefaultBinding* `,` *NameSpaceExport*</ins>
-  - <ins>*ExportedDefaultBinding* `,` *NamedExports*</ins>
+*ExportFromClause* :
+  - `*`
+  - *ExportedDefaultBinding*
+  - *NameSpaceExport*
+  - *NamedExports*
+  - *ExportedDefaultBinding* `,` *NameSpaceExport*
+  - *ExportedDefaultBinding* `,` *NamedExports*
 
-<ins>*ExportedDefaultBinding*</ins> :
-  - <ins>*IdentifierName*</ins>
+*ExportedDefaultBinding* :
+  - *IdentifierName*
 
-<ins>*NameSpaceExport*</ins> :
-  - <ins>`*` `as` *IdentifierName*</ins>
+*NameSpaceExport* :
+  - `*` `as` *IdentifierName*
 
-<del>*ExportClause*</del>
-<ins>*NamedExports*</ins> :
+<del>*ExportClause*</del><ins>*NamedExports*</ins> :
   - `{` `}`
   - `{` *ExportsList* `}`
   - `{` *ExportsList* `,` `}`
@@ -209,8 +208,8 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 *ExportDeclaration* :
   - <del>`export` `*` *FromClause* `;`</del>
   - <del>`export` *ExportClause* *FromClause* `;`</del>
-  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <del>`export` *ExportClause* `;`</del>
+  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <ins>`export` *NamedExports* `;`</ins>
   - `export` `default` *AssignmentExpression* `;`
 
@@ -222,8 +221,8 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 *ExportDeclaration* :
   - <del>`export` `*` *FromClause* `;`</del>
   - <del>`export` *ExportClause* *FromClause* `;`</del>
-  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <del>`export` *ExportClause* `;`</del>
+  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <ins>`export` *NamedExports* `;`</ins>
   - `export` *VariableStatement*
 
@@ -246,8 +245,8 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 *ExportDeclaration* :
   - <del>`export` `*` *FromClause* `;`</del>
   - <del>`export` *ExportClause* *FromClause* `;`</del>
-  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <del>`export` *ExportClause* `;`</del>
+  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
   - <ins>`export` *NamedExports* `;`</ins>
 
 1. Return NormalCompletion(empty).
