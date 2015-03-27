@@ -1,9 +1,10 @@
 > Note: This document is written as a delta against the ES6 RC4
 > specification. Headers illustrate the location in the specification. The use
 > of <ins>ins</ins> and <del>del</del> illustrate addition and removal to
-> existing sections. Unadorned content is new or contextually unalterned.
-> Omitted content should be assumed irrelevant to this proposal unless
-> otherwise noted.
+> existing sections. Shaded blocks followed by content indicates an existing
+> portion of content to be replaced by the followed content. Unadorned content
+> is new or contextually unalterned. Omitted content should be assumed
+> irrelevant to this proposal unless otherwise noted.
 
 ---
 
@@ -105,8 +106,6 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 #### 15.2.3.4 Static Semantics: ExportedNames
 
-> Note: This existing block is replaced by the following content.
-
 > *ExportDeclaration* : `export` `*` *FromClause* `;`
 >
 > 1. Return a new empty List.
@@ -140,30 +139,25 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 #### 15.2.3.5 Static Semantics: ExportEntries
 
-<del>
-*ExportDeclaration* : `export` `*` *FromClause* `;`
+> *ExportDeclaration* : `export` `*` *FromClause* `;`
+>
+> 1. Let *module* be the sole element of ModuleRequests of *FromClause*.
+> 2. Let *entry* be the Record {[[ModuleRequest]]: *module*, [[ImportName]]: **"*"**, [[LocalName]]: **null**, [[ExportName]]: **null** }.
+> 3. Return a new List containing *entry*.
+>
+> *ExportDeclaration* : `export` *ExportClause* *FromClause* `;`
+>
+> 1. Let *module* be the sole element of ModuleRequests of *FromClause*.
+> 2. Return ExportEntriesForModule of *ExportClause* with argument *module*.
 
-1. Let *module* be the sole element of ModuleRequests of *FromClause*.
-2. Let *entry* be the Record {[[ModuleRequest]]: *module*, [[ImportName]]: **"*"**, [[LocalName]]: **null**, [[ExportName]]: **null** }.
-3. Return a new List containing *entry*.
-
-*ExportDeclaration* : `export` *ExportClause* *FromClause* `;`
-
-1. Let *module* be the sole element of ModuleRequests of *FromClause*.
-2. Return ExportEntriesForModule of *ExportClause* with argument *module*.
-</del>
-
-<ins>
 *ExportDeclaration* : `export` *ExportFromClause* *FromClause* `;`
 
 1. Let *module* be the sole element of ModuleRequests of *FromClause*.
 2. Return ExportEntriesForModule of *ExportFromClause* with argument *module*.
-</ins>
 
 
 #### 15.2.3.6 Static Semantics: ExportEntriesForModule
 
-<ins>
 *ExportFromClause* : `*`
 
 1. Return a new List containing the Record {[[ModuleRequest]]: *module*, [[ImportName]]: **"*"**, [[LocalName]]: **null**, [[ExportName]]: **null** }.
@@ -189,7 +183,6 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 1. Let *exportName* be the StringValue of *IdentifierName*.
 2. Return a new List containing the Record {[[ModuleRequest]]: *module*, [[ImportName]]: **"*"**, [[LocalName]]: **null**, [[ExportName]]: *exportName* }.
-</ins>
 
 
 #### 15.2.3.7 Static Semantics: IsConstantDeclaration
@@ -220,11 +213,10 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 #### 15.2.3.9 Static Semantics: ModuleRequests
 
-<del>*ExportDeclaration* : `export` `*` *FromClause* `;`</del>
-
-<del>*ExportDeclaration* : `export` *ExportClause* *FromClause* `;`</del>
-
-<ins>*ExportDeclaration* : `export` *ExportFromClause* *FromClause* `;`</ins>
+*ExportDeclaration* :
+  - <del>`export` `*` *FromClause* `;`</del>
+  - <del>`export` *ExportClause* *FromClause* `;`</del>
+  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
 
 1. Return the ModuleRequests of *FromClause*.
 
