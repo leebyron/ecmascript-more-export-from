@@ -1,8 +1,9 @@
 > Note to editor: This document is written as a delta against the ES6 RC4
 > specification. Headers illustrate the location in the specification. The use
 > of <ins>ins</ins> and <del>del</del> illustrate addition and removal to
-> existing sections. Unadorned content is new. Omitted content should be assumed
-> irrelevant to this proposal unless otherwise noted.
+> existing sections. Unadorned content is new or contextually unalterned.
+> Omitted content should be assumed irrelevant to this proposal unless
+> otherwise noted.
 
 ---
 
@@ -104,19 +105,18 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 #### 15.2.3.4 Static Semantics: ExportedNames
 
-<del>
-*ExportDeclaration* : `export` `*` *FromClause* `;`
+> Note: This existing block is replaced by the following content.
 
-1. Return a new empty List.
+> *ExportDeclaration* : `export` `*` *FromClause* `;`
+>
+> 1. Return a new empty List.
+>
+> *ExportDeclaration* :
+>   - `export` *ExportClause* *FromClause* `;`
+>   - `export` *ExportClause* `;`
+>
+> 1. Return the ExportedNames of *ExportClause*.
 
-*ExportDeclaration* :
-  - `export` *ExportClause* *FromClause* `;`
-  - `export` *ExportClause* `;`
-
-1. Return the ExportedNames of *ExportClause*.
-</del>
-
-<ins>
 *ExportDeclaration* : `export` *ExportFromClause* *FromClause* `;`
 
 1. Return the ExportedNames of *ExportFromClause*.
@@ -136,7 +136,6 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 1. Let *names* be the ExportedNames of *ExportedDefaultBinding*.
 2. Append to *names* the elements of the ExportedNames of *NamedExports*.
 3. Return *names*.
-</ins>
 
 
 #### 15.2.3.5 Static Semantics: ExportEntries
