@@ -66,7 +66,7 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 *NameSpaceExport* :
   - `*` `as` *IdentifierName*
 
-<del>*ExportClause*</del><ins>*NamedExports*</ins> :
+*<del>ExportClause</del><ins>NamedExports</ins>* :
 
   - `{` `}`
   - `{` *ExportsList* `}`
