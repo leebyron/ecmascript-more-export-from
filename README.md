@@ -141,3 +141,16 @@ export v, * as ns from "mod"
 // symmetric to
 import v, * as ns from "mod"
 ```
+
+### Export default from
+
+One use case is to take the default export of an inner module and export it as
+the default export of the outer module. This is written as:
+
+```js
+export default from "mod";
+```
+
+Note: this is *not* additional syntax above what's already proposed. In fact,
+this is just the `export v from "mod"` syntax where the export name happens to
+be `"default"`.
