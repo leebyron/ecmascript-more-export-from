@@ -151,6 +151,6 @@ the default export of the outer module. This is written as:
 export default from "mod";
 ```
 
-Note: this is *not* additional syntax above what's already proposed. In fact,
+This is *not* additional syntax above what's already proposed. In fact,
 this is just the `export v from "mod"` syntax where the export name happens to
 be `"default"`.
