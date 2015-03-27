@@ -1,4 +1,4 @@
-> Note to editor: This document is written as a delta against the ES6 RC4
+> Note: This document is written as a delta against the ES6 RC4
 > specification. Headers illustrate the location in the specification. The use
 > of <ins>ins</ins> and <del>del</del> illustrate addition and removal to
 > existing sections. Unadorned content is new or contextually unalterned.
@@ -36,7 +36,7 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 ##### Syntax
 
-> Note to editor: *ExportClause* has been renamed to *NamedExports* for clarity
+> Note: *ExportClause* has been renamed to *NamedExports* for clarity
 > and symmetry with *NamedImports*. This rename should be reflected throughout
 > the entire ECMA spec document, which this delta document does not fully cover.
 
@@ -245,4 +245,4 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 ## A.5 Scripts and Modules
 
-> Note to editor: See alterations in 15.2.3.
+> Note: See alterations in 15.2.3.
