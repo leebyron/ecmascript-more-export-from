@@ -153,4 +153,5 @@ export default from "mod";
 
 This is *not* additional syntax above what's already proposed. In fact,
 this is just the `export v from "mod"` syntax where the export name happens to
-be `"default"`.
+be `default`. This nicely mirrors the other `export default ____` forms in both
+syntax and semantics without requiring additional specification.
