@@ -66,6 +66,7 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
   - `*` `as` *IdentifierName*
 
 <del>*ExportClause*</del><ins>*NamedExports*</ins> :
+
   - `{` `}`
   - `{` *ExportsList* `}`
   - `{` *ExportsList* `,` `}`
@@ -81,33 +82,22 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 
 #### 15.2.3.2 Static Semantics: BoundNames
 
-<del>
 *ExportDeclaration* :
-  - `export` `*` *FromClause* `;`
-  - `export` *ExportClause* *FromClause* `;`
-  - `export` *ExportClause* `;`
-</del>
-
-<ins>
-*ExportDeclaration* :
-  - `export` *ExportFromClause* *FromClause* `;`
-  - `export` *NamedExports* `;`
-</ins>
+  - <del>`export` `*` *FromClause* `;`</del>
+  - <del>`export` *ExportClause* *FromClause* `;`</del>
+  - <del>`export` *ExportClause* `;`</del>
+  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
+  - <ins>`export` *NamedExports* `;`</ins>
 
 1. Return a new empty List.
 
 
 #### 15.2.3.3 Static Semantics: ExportedBindings
 
-<del>
 *ExportDeclaration* :
-  - `export` *ExportClause* *FromClause* `;`
-  - `export` `*` *FromClause* `;`
-</del>
-
-<ins>
-*ExportDeclaration* : `export` *ExportFromClause* *FromClause* `;`
-</ins>
+  - <del>`export` *ExportClause* *FromClause* `;`</del>
+  - <del>`export` `*` *FromClause* `;`</del>
+  - <ins>`export` *ExportFromClause* *FromClause* `;`</ins>
 
 1. Return a new empty List.
 
