@@ -51,7 +51,11 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
   - `export` *Declaration*
   - `export` `default` *HoistableDeclaration*<sub>[Default]</sub>
   - `export` `default` *ClassDeclaration*<sub>[Default]</sub>
-  - `export` `default` [lookahead ∉ {`function`, `class`}] *AssignmentExpression*<sub>[In]</sub> `;`
+  - `export` `default` [lookahead ∉ {`function`, `class`<ins>, `from`</ins>}] *AssignmentExpression*<sub>[In]</sub> `;`
+
+> Note: Open to feedback on how to disambiguate `export default from` between
+> *ExportFromClause* and `default` *AssignmentExpression*.
+
 
 *ExportFromClause* :
   - `*`
