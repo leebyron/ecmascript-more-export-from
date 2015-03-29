@@ -8,6 +8,10 @@
 
 **Specification:** [Spec.md](./Spec.md)
 
+**AST:** [ESTree.md](./ESTree.md)
+
+**Transpiler:** See Babel's `es7.exportExtensions` option.
+
 ## Problem statement and rationale
 
 The `export ___ from "module"` statements are a very useful mechanism for
