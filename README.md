@@ -1,4 +1,4 @@
-# Additonal export-from statements in ES7
+# Additional export-from statements in ES7
 
 ## ES7 Proposal
 
