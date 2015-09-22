@@ -7,7 +7,7 @@ types to support this module export extensions proposal.
 ## ExportNamedDeclaration
 
 ```js
-extend interface ExportNamedDeclaration <: Node {
+extend interface ExportNamedDeclaration {
     specifiers: [ ExportSpecifier | ExportDefaultSpecifier | ExportNamespaceSpecifier ];
 }
 ```

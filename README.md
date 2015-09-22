@@ -27,9 +27,9 @@ semantics of the similar looking import statements.
 However, there are other import statements which would have very useful
 export-from forms.
 
+* Exporting the ModuleNameSpace object as a named export: `export * as ns from "mod"`
 * Forwarding the *default* export of the referenced module
 as a named export of this module: `export v from "mod"`
-* Exporting the ModuleNameSpace object as a named export: `export * as ns from "mod"`
 
 
 ### Current ES6 Modules:
@@ -40,6 +40,7 @@ Import Statement Form         | [[ModuleRequest]] | [[ImportName]] | [[LocalName
 `import * as ns from "mod";`  | `"mod"`           | `"*"`          | `"ns"`
 `import {x} from "mod";`      | `"mod"`           | `"x"`          | `"x"`
 `import {x as v} from "mod";` | `"mod"`           | `"x"`          | `"v"`
+`import "mod";`               |                   |                |
 
 
 Export Statement Form           | [[ModuleRequest]] | [[ImportName]] | [[LocalName]] | [[ExportName]]
@@ -59,16 +60,15 @@ Export Statement Form           | [[ModuleRequest]] | [[ImportName]] | [[LocalNa
 
 Export Statement Form           | [[ModuleRequest]] | [[ImportName]] | [[LocalName]] | [[ExportName]]
 ---------------------           | ----------------- | -------------- | ------------- | --------------
-`export v from "mod";`          | `"mod"`           | `"default"`    | **null**      | `"v"`
 `export * as ns from "mod";`    | `"mod"`           | `"*"`          | **null**      | `"ns"`
+`export v from "mod";`          | `"mod"`           | `"default"`    | **null**      | `"v"`
 
 
 ### Symmetry between import and export
 
-There's a symmetry between the export-from statements and the import statements
-they resemble. The semantics of the export-from statements are almost identical
-to their symmetric import statement followed by a `export {x}`, but with the
-critical difference of not altering local scope.
+There's a syntactic symmetry between the export-from statements and the import
+statements they resemble. There is also a semantic symmetry; where import
+creates a locally named binding, export-from creates an export entry.
 
 As an example:
 
@@ -76,31 +76,33 @@ As an example:
 export {v} from "mod";
 ```
 
-Is very similar to:
+Is symmetric to:
 
 ```js
 import {v} from "mod";
-export {v};
 ```
 
-However, `v` is not introduced as a name in the local scope.
+However, where importing `v` introduces a name in the local scope, export-from
+`v` does not alter the local scope, instead creating an export entry.
 
-The two proposed additions follow this same pattern:
+The two proposed additions follow this same symmetric pattern:
 
-```js
-// proposed:
-export v from "mod";
-// symmetric to:
-import v from "mod";
-export {v};
-```
+**Exporting a namespace exotic object without altering local scope:**
 
 ```js
 // proposed:
 export * as ns from "mod";
 // symmetric to:
 import * as ns from "mod";
-export {ns};
+```
+
+**Re-exporting a module's default export with a name:**
+
+```js
+// proposed:
+export v from "mod";
+// symmetric to:
+import v from "mod";
 ```
 
 Using the terminology of Table 42 in ECMA-262 v6 RC4, the export-from form can
@@ -110,21 +112,21 @@ be created from the symmetric import form by setting export-from's
 
 #### Table showing symmetry
 
-Statement Form                          | [[ModuleRequest]] | [[ImportName]] | [[LocalName]] | [[ExportName]]
---------------                          | ----------------- | -------------- | ------------- | --------------
-`import v from "mod";`                  | `"mod"`           | `"default"`    | `"v"`         |
-<ins>`export v from "mod";`</ins>       | `"mod"`           | `"default"`    | **null**      | `"v"`
-`import * as ns from "mod";`            | `"mod"`           | `"*"`          | `"ns"`        |
-<ins>`export * as ns from "mod";`</ins> | `"mod"`           | `"*"`          | **null**      | `"ns"`
-`import {x} from "mod";`                | `"mod"`           | `"x"`          | `"x"`         |
-`export {x} from "mod";`                | `"mod"`           | `"x"`          | **null**      | `"x"`
-`import {x as v} from "mod";`           | `"mod"`           | `"x"`          | `"v"`         |
-`export {x as v} from "mod";`           | `"mod"`           | `"x"`          | **null**      | `"v"`
+Statement Form                          | [[ModuleRequest]] | [[ImportName]] | [[LocalName]]  | [[ExportName]]
+--------------                          | ----------------- | -------------- | -------------- | --------------
+`import v from "mod";`                  | `"mod"`           | `"default"`    | `"v"`          |
+<ins>`export v from "mod";`</ins>       | `"mod"`           | `"default"`    | **null**       | `"v"`
+`import * as ns from "mod";`            | `"mod"`           | `"*"`          | `"ns"`         |
+<ins>`export * as ns from "mod";`</ins> | `"mod"`           | `"*"`          | **null**       | `"ns"`
+`import {x} from "mod";`                | `"mod"`           | `"x"`          | `"x"`          |
+`export {x} from "mod";`                | `"mod"`           | `"x"`          | **null**       | `"x"`
+`import {x as v} from "mod";`           | `"mod"`           | `"x"`          | `"v"`          |
+`export {x as v} from "mod";`           | `"mod"`           | `"x"`          | **null**       | `"v"`
 <del>`import * from "mod"`</del>        | `"mod"`           | **null**       | **null** (many)|
-`export * from "mod";`                  | `"mod"`           | `"*"`          | **null**      | **null** (many)
+`export * from "mod";`                  | `"mod"`           | `"*"`          | **null**       | **null** (many)
 
 > Note: `import * from "mod"` is only included for illustrative purposes. It is
-> not part of any spec or proposal.
+> not in existing spec or part of this proposal.
 
 ### Compound export-from statements
 
@@ -158,4 +160,5 @@ export default from "mod";
 This is *not* additional syntax above what's already proposed. In fact,
 this is just the `export v from "mod"` syntax where the export name happens to
 be `default`. This nicely mirrors the other `export default ____` forms in both
-syntax and semantics without requiring additional specification.
+syntax and semantics without requiring additional specification. An alteration
+to an existing lookahead restriction is necessary for supporting this case.
