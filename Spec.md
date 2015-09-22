@@ -24,18 +24,18 @@ Export Statement Form                   | [[ExportName]]    | [[ModuleRequest]] 
 `export default function f(){};`        | `"default"`       | **null**          | **null**              | `"f"`
 `export default function(){};`          | `"default"`       | **null**          | **null**              | `"*default*"`
 `export default 42;`                    | `"default"`       | **null**          | **null**              | `"*default*"`
-`export {x}`;                           | `"x"`             | **null**          | **null**              | `"x"`
-`export {v as x}`;                      | `"x"`             | **null**          | **null**              | `"v"`
+`export {x};`                           | `"x"`             | **null**          | **null**              | `"x"`
+`export {v as x};`                      | `"x"`             | **null**          | **null**              | `"v"`
 <ins>`export v from "mod";`</ins>       | <ins>`"v"`</ins>  | <ins>`"mod"`</ins>| <ins>`"default"`</ins>| <ins>**null**</ins>
 <ins>`export * as ns from "mod";`</ins> | <ins>`"ns"`</ins> | <ins>`"mod"`</ins>| <ins>`"*"`</ins>      | <ins>**null**</ins>
-`export {x} from "mod"`;                | `"x"`             | `"mod"`           | `"x"`                 | **null**
-`export {v as x} from "mod"`;           | `"x"`             | `"mod"`           | `"v"`                 | **null**
-`export * from "mod"`;                  | **null**          | `"mod"`           | `"*"`                 | **null**
+`export {x} from "mod";`                | `"x"`             | `"mod"`           | `"x"`                 | **null**
+`export {v as x} from "mod";`           | `"x"`             | `"mod"`           | `"v"`                 | **null**
+`export * from "mod";`                  | **null**          | `"mod"`           | `"*"`                 | **null**
 
 
 ### 15.2.3 Exports
 
-##### Syntax
+**Syntax**
 
 > Note: *ExportClause* has been renamed to *NamedExports* for clarity
 > and symmetry with *NamedImports*. This rename should be reflected throughout
