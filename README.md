@@ -1,3 +1,14 @@
+<p align="center"><b>
+<br><br><br>
+
+This spec has been withdrawn in favor of the equivalent micro-proposals: <a href="https://github.com/leebyron/ecmascript-export-ns-from">export ns from</a> and <a href="https://github.com/leebyron/ecmascript-export-default-from">export default from</a>.
+
+<br><br><br>
+</b></p>
+
+<hr><br><br><br><br><br>
+
+
 # Additional export-from statements in ES7
 
 ## ES7 Proposal
